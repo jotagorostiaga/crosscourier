@@ -30,7 +30,11 @@ jobs:
           node-version: 22
           cache: npm
 
-      - run: npm ci
+      - name: Instalar dependencias
+        env:
+          # playwright solo se usa para el preview local; no hace falta el browser.
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+        run: npm ci
 
       - name: Verificar tipos y lint
         run: |
