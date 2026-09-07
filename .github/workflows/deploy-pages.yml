@@ -42,6 +42,9 @@ jobs:
         env:
           NEXT_OUTPUT: export
           NEXT_BASE_PATH: /${{ github.event.repository.name }}
+          # Mismo prefijo, pero visible en el cliente: en una exportación
+          # estática next/image no optimiza y no se lo agrega solo.
+          NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
           # Pages sirve archivos estáticos: no hay endpoint de leads.
           NEXT_PUBLIC_DEMO: "true"
         run: npm run build

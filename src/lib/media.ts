@@ -40,6 +40,19 @@ export type MediaKey = keyof typeof mediaManifest;
 
 const useLocal = process.env.NEXT_PUBLIC_MEDIA_LOCAL !== "false";
 
+/**
+ * Prefijo de rutas cuando el sitio no se sirve desde la raíz del dominio
+ * (GitHub Pages lo publica en /<repositorio>). En una exportación estática
+ * `next/image` no optimiza y deja el `src` tal cual, así que el prefijo hay
+ * que ponerlo acá. En local y en un deploy en la raíz queda vacío.
+ */
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+/** La ruta de un archivo de /public, con el prefijo del deploy si hace falta. */
+export function asset(path: string): string {
+  return `${basePath}${path}`;
+}
+
 export function media(key: MediaKey): string {
-  return useLocal ? `/media/${key}.jpg` : mediaManifest[key];
+  return useLocal ? asset(`/media/${key}.jpg`) : mediaManifest[key];
 }

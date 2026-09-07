@@ -4,7 +4,7 @@ import { ArrowRightIcon } from "@phosphor-icons/react/dist/ssr";
 import { Container } from "@/components/ui/container";
 import { Pill } from "@/components/ui/pill";
 import { HeroQuoteStarter } from "@/components/quote/hero-quote-starter";
-import { media } from "@/lib/media";
+import { asset, media } from "@/lib/media";
 import { routes } from "@/lib/site";
 
 /**
@@ -34,7 +34,7 @@ export function HeroHome() {
 
       {/* Marca de agua con el isotipo: identidad, no decoración genérica. */}
       <Image
-        src="/brand/mark.png"
+        src={asset("/brand/mark.png")}
         alt=""
         aria-hidden
         width={400}

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { asset } from "@/lib/media";
 import { cn } from "@/lib/utils";
 
 export function Logo({
@@ -18,7 +19,11 @@ export function Logo({
       aria-label="CrossCourier, ir al inicio"
     >
       <Image
-        src={tone === "ink" ? "/brand/crosscourier-light.png" : "/brand/crosscourier.png"}
+        src={asset(
+          tone === "ink"
+            ? "/brand/crosscourier-light.png"
+            : "/brand/crosscourier.png",
+        )}
         alt="CrossCourier"
         width={460}
         height={77}

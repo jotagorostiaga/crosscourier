@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
+import { asset } from "@/lib/media";
 import { routes, site } from "@/lib/site";
 
 /**
@@ -35,7 +36,7 @@ export function ClosingCta({
             className="pointer-events-none hidden justify-self-end lg:col-span-5 lg:block"
           >
             <Image
-              src="/brand/isologo.svg"
+              src={asset("/brand/isologo.svg")}
               alt=""
               width={412}
               height={348}
