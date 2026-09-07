@@ -36,11 +36,8 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
         run: npm ci
 
-      - name: Verificar tipos y lint
-        run: |
-          npm run typecheck
-          npm run lint
-
+      # El build va primero: Next genera next-env.d.ts y .next/types (de donde
+      # sale PageProps), que el typecheck necesita en un checkout limpio.
       - name: Build estático
         env:
           NEXT_OUTPUT: export
@@ -48,6 +45,11 @@ jobs:
           # Pages sirve archivos estáticos: no hay endpoint de leads.
           NEXT_PUBLIC_DEMO: "true"
         run: npm run build
+
+      - name: Verificar tipos y lint
+        run: |
+          npm run typecheck
+          npm run lint
 
       - name: Evitar el procesamiento de Jekyll
         run: touch out/.nojekyll
