@@ -17,14 +17,14 @@ git commit -m "CrossCourier: sitio completo"
 Si tenés la CLI de GitHub (`gh`), con un comando queda creado y subido:
 
 ```bash
-gh repo create crosscourier-web --public --source=. --push
+gh repo create crosscourier --public --source=. --push
 ```
 
 Si no la tenés, creá el repo vacío en https://github.com/new
-(nombre `crosscourier-web`, **público**, sin README ni .gitignore) y después:
+(nombre `crosscourier`, **público**, sin README ni .gitignore) y después:
 
 ```bash
-git remote add origin https://github.com/TU-USUARIO/crosscourier-web.git
+git remote add origin https://github.com/TU-USUARIO/crosscourier.git
 git push -u origin main
 ```
 
@@ -36,7 +36,7 @@ Con eso el workflow corre solo. Mirá el avance en la pestaña **Actions**; tard
 unos 2-3 minutos. Cuando termina, el link es:
 
 ```
-https://TU-USUARIO.github.io/crosscourier-web/
+https://TU-USUARIO.github.io/crosscourier/
 ```
 
 Ese es el que le mandás al cliente. Cada push a `main` lo actualiza.
