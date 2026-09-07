@@ -1,0 +1,538 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   CrossCourier - Design tokens
+   Identidad verificada de marca:
+     Pantone 433C  #1c262e  (ink)
+     Pantone 3588C #ff8c00  (naranja)
+   Regla de composición: la página es LIGHT. El ink se usa como superficie de
+   marca solo en dos momentos (hero y cierre/footer), nunca alternado al azar.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Marca */
+  --cc-ink: #1c262e;
+  --cc-ink-800: #24303a;
+  --cc-ink-700: #33414d;
+  --cc-ink-600: #4b5b68;
+  --cc-orange: #ff8c00;
+  --cc-orange-600: #ef7d00;
+
+  /* Naranja legible sobre fondos claros (5.9:1 sobre blanco).
+     El naranja puro NO se usa nunca como color de texto sobre claro. */
+  --cc-orange-text: #9a5000;
+
+  /* Superficies */
+  color-scheme: light;
+
+  --cc-bg: #f6f6f4;
+  --cc-surface: #ffffff;
+  --cc-surface-2: #efefec;
+  --cc-surface-ink: var(--cc-ink);
+  --cc-surface-ink-2: #16202a;
+
+  /* Texto */
+  --cc-text: #1c262e;
+  --cc-text-muted: #56646f;
+  --cc-text-faint: #79858f;
+  --cc-text-on-ink: #f2f4f5;
+  --cc-text-on-ink-muted: #a7b3bc;
+
+  /* Líneas */
+  --cc-line: #dcdcd6;
+  --cc-line-strong: #c6c7c0;
+  --cc-line-on-ink: rgba(255, 255, 255, 0.14);
+
+  /* Estados */
+  /* Marca de terceros: el verde oficial de WhatsApp. */
+  --cc-whatsapp: #25d366;
+
+  --cc-focus: #ff8c00;
+  --cc-danger: #b3261e;
+  --cc-ok: #2c6e49;
+
+  /* Radios: interactivos 10px, contenedores 18px */
+  --cc-radius-ui: 10px;
+  --cc-radius-panel: 18px;
+
+  /* Sombra tintada al ink, nunca negro puro */
+  --cc-shadow-sm: 0 1px 2px rgba(28, 38, 46, 0.06);
+  --cc-shadow-md: 0 8px 28px -12px rgba(28, 38, 46, 0.22);
+  --cc-shadow-lg: 0 26px 60px -28px rgba(28, 38, 46, 0.35);
+
+  /* Curva única de easing */
+  --cc-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Alto del header. Los heroes oscuros se meten por debajo. */
+  --cc-header-h: 80px;
+  /* Barra del header: alto propio, aire arriba, eje máximo y radio. */
+  --cc-bar-h: 56px;
+  --cc-bar-inset: 12px;
+  --cc-bar-radius: 1rem;
+  --cc-bar-edge: max(var(--cc-bar-inset), calc((100% - 1280px) / 2));
+  /*
+   * Aire del lado de los botones. Es la mitad de lo que sobra entre la
+   * pastilla y un botón de 44px: así la curva del botón queda concéntrica con
+   * la de la pastilla y el blanco alrededor se lee parejo.
+   */
+  --cc-bar-pad: calc((var(--cc-bar-h) - 44px) / 2);
+}
+
+@theme inline {
+  --color-ink: var(--cc-ink);
+  --color-ink-800: var(--cc-ink-800);
+  --color-ink-700: var(--cc-ink-700);
+  --color-ink-600: var(--cc-ink-600);
+  --color-orange: var(--cc-orange);
+  --color-orange-600: var(--cc-orange-600);
+  --color-orange-text: var(--cc-orange-text);
+  --color-whatsapp: var(--cc-whatsapp);
+
+  --color-bg: var(--cc-bg);
+  --color-surface: var(--cc-surface);
+  --color-surface-2: var(--cc-surface-2);
+  --color-surface-ink: var(--cc-surface-ink);
+  --color-surface-ink-2: var(--cc-surface-ink-2);
+
+  --color-fg: var(--cc-text);
+  --color-fg-muted: var(--cc-text-muted);
+  --color-fg-faint: var(--cc-text-faint);
+  --color-on-ink: var(--cc-text-on-ink);
+  --color-on-ink-muted: var(--cc-text-on-ink-muted);
+
+  --color-line: var(--cc-line);
+  --color-line-strong: var(--cc-line-strong);
+  --color-line-on-ink: var(--cc-line-on-ink);
+  --color-danger: var(--cc-danger);
+  --color-ok: var(--cc-ok);
+
+  --radius-ui: var(--cc-radius-ui);
+  --radius-panel: var(--cc-radius-panel);
+
+  --shadow-cc-sm: var(--cc-shadow-sm);
+  --shadow-cc-md: var(--cc-shadow-md);
+  --shadow-cc-lg: var(--cc-shadow-lg);
+
+  --font-display: var(--font-coolvetica), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+
+  /* Escala tipográfica fluida */
+  --text-display-xl: clamp(2.75rem, 1.6rem + 4.6vw, 5.25rem);
+  --text-display-xl--line-height: 0.98;
+  --text-display-xl--letter-spacing: -0.035em;
+
+  --text-display: clamp(2.25rem, 1.5rem + 3.1vw, 3.9rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.03em;
+
+  --text-title: clamp(1.6rem, 1.25rem + 1.5vw, 2.4rem);
+  --text-title--line-height: 1.1;
+  --text-title--letter-spacing: -0.02em;
+
+  --text-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  --text-lead--line-height: 1.55;
+}
+
+@layer base {
+  * {
+    border-color: var(--cc-line);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--cc-bg);
+    color: var(--cc-text);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--cc-focus);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--cc-orange);
+    color: var(--cc-ink);
+  }
+
+  /* Números y datos operativos siempre tabulares */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --cc-header-h: 102px;
+    --cc-bar-h: 68px;
+    --cc-bar-inset: 17px;
+    --cc-bar-radius: 1.25rem;
+  }
+}
+
+@layer utilities {
+  /*
+   * Header flotante: una pastilla apoyada sobre el contenido, separada del
+   * borde superior y alineada al eje útil del sitio. Al hacer scroll no cambia
+   * de forma: sólo gana cuerpo y sombra para despegarse de lo que pasa debajo.
+   *
+   * El eje se calcula igual que en el panel del menú, así los dos coinciden.
+   */
+  .cc-headbar {
+    position: absolute;
+    top: var(--cc-bar-inset);
+    right: var(--cc-bar-edge);
+    left: var(--cc-bar-edge);
+    height: var(--cc-bar-h);
+    border-radius: var(--cc-bar-radius);
+    /*
+     * Vidrio de verdad: la barra queda translúcida para que se vea el
+     * desenfoque de lo que pasa por detrás. La legibilidad la sostienen el
+     * blur y la saturación, no la opacidad.
+     */
+    background-color: color-mix(in oklab, var(--cc-surface) 62%, transparent);
+    border: 1px solid color-mix(in oklab, #ffffff 55%, transparent);
+    box-shadow: var(--cc-shadow-md);
+    backdrop-filter: blur(26px) saturate(1.7);
+    -webkit-backdrop-filter: blur(26px) saturate(1.7);
+    transition:
+      background-color 0.3s var(--cc-ease),
+      border-color 0.3s var(--cc-ease),
+      box-shadow 0.3s var(--cc-ease);
+  }
+
+  header[data-scrolled="true"] .cc-headbar {
+    background-color: color-mix(in oklab, var(--cc-surface) 80%, transparent);
+    box-shadow: var(--cc-shadow-lg);
+  }
+
+  /* Con el menú abierto la barra se apoya sobre el velo: tiene que ser opaca. */
+  header[data-menu="open"] .cc-headbar {
+    background-color: var(--cc-surface);
+    border-color: var(--cc-line);
+  }
+
+  /*
+   * Dentro de la barra: aire generoso del lado del logo y el justo del lado
+   * de los botones, para que ninguno pelee con el borde curvo.
+   */
+  .cc-headbar-inner {
+    width: 100%;
+    padding-left: 1.25rem;
+    padding-right: var(--cc-bar-pad);
+  }
+
+  @media (min-width: 768px) {
+    .cc-headbar-inner {
+      padding-left: 1.75rem;
+    }
+  }
+
+  /* Menú mobile: mismo vidrio que el panel de desktop. */
+  .cc-headdrop-mobile {
+    top: calc(var(--cc-bar-inset) + var(--cc-bar-h) + 0.5rem);
+    right: var(--cc-bar-inset);
+    left: var(--cc-bar-inset);
+    max-height: calc(100dvh - var(--cc-bar-inset) * 2 - var(--cc-bar-h) - 0.5rem);
+    background-color: var(--cc-surface);
+    border: 1px solid var(--cc-line);
+    border-radius: var(--cc-radius-panel);
+    box-shadow: var(--cc-shadow-lg);
+    animation: cc-drop 0.28s var(--cc-ease) both;
+  }
+
+  /*
+   * Velo del menú: desenfoca la página que queda a la vista, de modo que el
+   * panel pase a primer plano sin tapar del todo el contexto.
+   */
+  .cc-headscrim {
+    background-color: color-mix(in oklab, var(--cc-ink) 12%, transparent);
+    backdrop-filter: blur(10px) saturate(1.1);
+    -webkit-backdrop-filter: blur(10px) saturate(1.1);
+    animation: cc-fade 0.28s var(--cc-ease) both;
+  }
+
+  /* Panel del menú: tarjeta flotante, alineada con la pastilla. */
+  .cc-headdrop {
+    top: calc(var(--cc-bar-inset) + var(--cc-bar-h) + 0.5rem);
+    right: var(--cc-bar-edge);
+    left: var(--cc-bar-edge);
+    background-color: var(--cc-surface);
+    border: 1px solid var(--cc-line);
+    border-radius: var(--cc-radius-panel);
+    box-shadow: var(--cc-shadow-lg);
+    overflow: hidden;
+  }
+
+  /* Hero que corre por debajo del header transparente. */
+  .cc-hero-offset {
+    margin-top: calc(-1 * var(--cc-header-h));
+    padding-top: var(--cc-header-h);
+  }
+
+  /*
+   * Foto del hero: arranca en el borde superior —el header de vidrio la
+   * desenfoca— y se disuelve hacia abajo con una máscara, para que no haya
+   * un corte recto contra la sección siguiente.
+   */
+  .cc-hero-photo {
+    mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 58%,
+      rgba(0, 0, 0, 0.55) 82%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 58%,
+      rgba(0, 0, 0, 0.55) 82%,
+      transparent 100%
+    );
+  }
+
+  .cc-grain {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.028;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Confirmación de selección: el check entra, no aparece de golpe. */
+  .cc-pop {
+    animation: cc-pop 0.26s var(--cc-ease) both;
+  }
+
+  /* Entrada de un panel que se muestra sin desmontarse. */
+  .cc-fade {
+    animation: cc-fade 0.32s var(--cc-ease) both;
+  }
+
+  /* Marcadores del mapa: el pulso indica plaza activa, no decora. */
+  .cc-ping {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: cc-ping 2.8s var(--cc-ease) infinite;
+  }
+
+  /* Flujo sobre las rutas del mapa. */
+  .cc-arc-flow {
+    stroke-dasharray: 3 190;
+    animation: cc-flow 5s linear infinite;
+  }
+
+  /*
+   * Servicios que se revelan con el scroll. El estado activo llega por
+   * data-on, de modo que el markup no cambia: sólo cambia el atributo.
+   */
+  .cc-stack-item {
+    color: var(--cc-text-faint);
+    transition: color 0.4s var(--cc-ease);
+  }
+
+  .cc-stack-item[data-on="true"] {
+    color: var(--cc-text);
+  }
+
+  .cc-stack-bar {
+    display: block;
+    width: 5px;
+    flex: none;
+    align-self: stretch;
+    border-radius: 999px;
+    background-color: var(--cc-orange);
+    transform: scaleY(0);
+    transform-origin: center;
+    opacity: 0;
+    transition:
+      transform 0.42s var(--cc-ease),
+      opacity 0.3s var(--cc-ease);
+  }
+
+  .cc-stack-item[data-on="true"] .cc-stack-bar {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+
+  /*
+   * La bajada tiene su alto reservado: aparece y desaparece sin mover al resto
+   * de la lista, que es lo que hacía sentir el bloque descompensado.
+   */
+  .cc-stack-body {
+    display: block;
+    height: 2.75rem;
+    padding-top: 0.5rem;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition:
+      opacity 0.32s var(--cc-ease),
+      transform 0.4s var(--cc-ease);
+  }
+
+  .cc-stack-item[data-on="true"] .cc-stack-body {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .cc-stack-shot {
+    opacity: 0;
+    transform: scale(1.03);
+    transition:
+      opacity 0.55s var(--cc-ease),
+      transform 0.8s var(--cc-ease);
+  }
+
+  .cc-stack-shot[data-on="true"] {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /*
+   * Tarjetas de preguntas. La abierta gana borde y sombra: se entiende cuál
+   * está desplegada sin necesidad de leer.
+   */
+  .cc-faq-card {
+    box-shadow: var(--cc-shadow-sm);
+    transition: box-shadow 0.3s var(--cc-ease);
+  }
+
+  .cc-faq-card:hover,
+  .cc-faq-card[data-open="true"] {
+    box-shadow: var(--cc-shadow-md);
+  }
+
+  /* Riel horizontal de historias: se desplaza con el dedo, sin barra visible. */
+  .cc-rail {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .cc-rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Progreso de una historia: el mismo ritmo que en una story. */
+  .cc-story-progress {
+    width: 0;
+    animation: cc-story 6s linear forwards;
+  }
+
+  /* Retícula técnica sutil: organiza, no decora */
+  .cc-rule-grid {
+    background-image: linear-gradient(
+      to right,
+      var(--cc-line-on-ink) 1px,
+      transparent 1px
+    );
+    background-size: 25% 100%;
+  }
+}
+
+@keyframes cc-pop {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes cc-fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cc-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+  70%,
+  100% {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+
+@keyframes cc-flow {
+  to {
+    stroke-dashoffset: -193;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .cc-ping,
+  .cc-arc-flow {
+    display: none;
+  }
+}
+
+@keyframes cc-story {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes cc-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

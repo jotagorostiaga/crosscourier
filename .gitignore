@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+.env*.local
+.DS_Store
+next-env.d.ts
+.next-types
+out
+preview
+.preview-capture.json
+_to_delete
