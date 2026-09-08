@@ -106,8 +106,10 @@ export function NetworkMap({
             <Reveal>
               <Pill>Red operativa</Pill>
               <h2 className="mt-6 text-title">
-                <span className="block">Cuatro plazas,</span>
-                <span className="block text-ink-600">una sola operación.</span>
+                <span className="block">Nuestros Warehouse</span>
+                <span className="block text-ink-600">
+                  para centralizar tu operación.
+                </span>
               </h2>
               <p className="mt-5 max-w-[44ch] text-lead text-fg-muted">
                 Warehouses propios en Buenos Aires, Miami, Shanghái y Shenzhen.
