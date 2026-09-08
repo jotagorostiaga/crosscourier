@@ -153,7 +153,7 @@ export default function WarehousePage() {
         </Container>
       </Section>
 
-      <NetworkMap tone="surface" showCta={false} id="red" />
+      <NetworkMap tone="surface" showCta={false} id="red" compactBody />
 
       <FaqSection items={faqs} title="Preguntas sobre warehouse" tone="bg" />
       <ClosingCta

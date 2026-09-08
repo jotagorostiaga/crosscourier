@@ -92,11 +92,18 @@ export function NetworkMap({
   tone = "surface",
   showCta = true,
   id,
+  compactBody = false,
 }: {
   tone?: "bg" | "surface";
   showCta?: boolean;
   /** Ancla para enlazarla desde el menú (por ejemplo /warehouse#red). */
   id?: string;
+  /**
+   * En /warehouse el hero ya abre con "Recibí, almacená, consolidá…", así que
+   * ahí el bloque se queda sólo con la parte que suma: dónde están los
+   * warehouses. En Home, en cambio, ésta es la primera vez que se explica.
+   */
+  compactBody?: boolean;
 }) {
   return (
     <Section tone={tone} id={id} className="scroll-mt-24">
@@ -111,11 +118,25 @@ export function NetworkMap({
                   para centralizar tu operación.
                 </span>
               </h2>
-              <p className="mt-5 max-w-[44ch] text-lead text-fg-muted">
-                Warehouses propios en Buenos Aires, Miami, Shanghái y Shenzhen.
-                Ahí recibimos, almacenamos y consolidamos tu mercadería antes de
-                que empiece a viajar.
-              </p>
+              {compactBody ? (
+                <p className="mt-5 max-w-[44ch] text-lead text-fg-muted">
+                  Warehouses en Buenos Aires, Miami, Shanghái y Shenzhen: ahí
+                  recibimos, almacenamos y consolidamos tu mercadería antes de
+                  que empiece a viajar.
+                </p>
+              ) : (
+                <>
+                  <p className="mt-5 max-w-[44ch] text-lead text-fg-muted">
+                    Recibí, almacená, consolidá y prepará tu mercadería en un
+                    mismo lugar.
+                  </p>
+                  <p className="mt-4 max-w-[48ch] text-[0.9375rem] leading-relaxed text-fg-muted">
+                    {site.name} brinda servicios de warehouse para empresas que
+                    necesitan administrar compras, stock o mercadería antes de
+                    su distribución nacional o internacional.
+                  </p>
+                </>
+              )}
               {showCta ? (
                 <Button href="/warehouse" className="mt-8" withArrow>
                   Conocer Warehouse
