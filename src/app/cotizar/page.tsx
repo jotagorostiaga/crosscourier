@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { CheckIcon } from "@phosphor-icons/react/dist/ssr";
 import { Container } from "@/components/ui/container";
-import { Pill } from "@/components/ui/pill";
 import { QuoteFlowFromParams } from "@/components/quote/quote-flow-from-params";
 import { JsonLd } from "@/components/seo/json-ld";
 import { breadcrumbJsonLd } from "@/lib/seo";
@@ -32,7 +31,7 @@ export default function QuotePage() {
       />
 
       {/* Una sola columna centrada: el formulario es lo único que importa acá. */}
-      <section className="relative isolate overflow-hidden bg-bg py-14 md:py-20">
+      <section className="relative isolate overflow-hidden bg-bg py-14 md:pt-16 md:pb-20">
         <div
           aria-hidden
           className="pointer-events-none absolute -top-48 left-1/2 size-[720px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,140,0,0.07),transparent_65%)]"
@@ -40,14 +39,16 @@ export default function QuotePage() {
 
         <Container className="relative">
           <div className="mx-auto max-w-[48rem]">
+            {/* Sin eyebrow: el CTA del header ya dijo a qué vino el usuario.
+                La bajada entra en un renglón en desktop para que el formulario
+                —lo único accionable de la página— quede lo más arriba posible. */}
             <div className="flex flex-col items-center text-center">
-              <Pill>Cotizá tu envío</Pill>
-              <h1 className="mt-6 max-w-[16ch] text-display">
+              <h1 className="max-w-[16ch] text-display">
                 Contanos tu operación.
               </h1>
-              <p className="mt-5 max-w-[50ch] text-lead text-fg-muted">
-                Con estos datos identificamos qué modalidad corresponde a tu
-                envío y te lo confirmamos antes de cotizar.
+              <p className="mt-5 text-lead text-balance text-fg-muted">
+                Identificamos qué modalidad corresponde a tu envío antes de
+                cotizar.
               </p>
             </div>
 
