@@ -61,20 +61,6 @@ export const offices: Office[] = [
     email: "chile@alfasouthcrosslog.com",
   },
   {
-    country: "El Salvador",
-    city: "San Salvador",
-    address: "San Salvador",
-    phones: ["+54 11 5218 8188"],
-    email: "salvador@southcrosslog.com",
-  },
-  {
-    country: "España",
-    city: "Madrid",
-    address: "Paseo de la Castellana 200, Piso 5, Oficina 516",
-    phones: ["+34 617 557 038"],
-    email: "spain@southcrosslog.com",
-  },
-  {
     country: "Guatemala",
     city: "Ciudad de Guatemala",
     address:
