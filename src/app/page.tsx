@@ -62,7 +62,7 @@ export default function HomePage() {
             analizamos una solución de carga internacional para tu operación.
           </p>
         }
-        cta="Consultar una operación"
+        cta="Más información"
         ctaHref="/importar/carga-sin-limites"
         image="carga"
       />
