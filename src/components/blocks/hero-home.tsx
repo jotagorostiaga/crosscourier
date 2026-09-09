@@ -4,7 +4,7 @@ import { ArrowRightIcon } from "@phosphor-icons/react/dist/ssr";
 import { Container } from "@/components/ui/container";
 import { Pill } from "@/components/ui/pill";
 import { HeroQuoteStarter } from "@/components/quote/hero-quote-starter";
-import { asset, media } from "@/lib/media";
+import { media } from "@/lib/media";
 import { routes } from "@/lib/site";
 
 /**
@@ -29,25 +29,15 @@ export function HeroHome() {
         fill
         priority
         sizes="100vw"
-        /* En desktop el recorte se corre hacia arriba de la foto: centrado, la
-           trompa del avión quedaba cortada contra el borde superior. */
-        className="cc-hero-photo object-cover object-center md:object-[50%_18%]"
+        /* En desktop el recorte muestra la parte alta de la foto: más al centro
+           la trompa del avión se corta contra el borde superior. */
+        className="cc-hero-photo object-cover object-center md:object-[50%_4%]"
       />
       <div
         aria-hidden
         className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(22,32,42,0.9)_0%,rgba(22,32,42,0.82)_45%,rgba(22,32,42,0.94)_100%)] md:bg-[linear-gradient(100deg,var(--cc-surface-ink-2)_0%,rgba(22,32,42,0.96)_32%,rgba(22,32,42,0.78)_56%,rgba(22,32,42,0.52)_100%)]"
       />
 
-      {/* Marca de agua con el isotipo: identidad, no decoración genérica. */}
-      <Image
-        src={asset("/brand/mark.png")}
-        alt=""
-        aria-hidden
-        width={400}
-        height={440}
-        priority
-        className="pointer-events-none absolute -top-28 -right-28 hidden w-[540px] max-w-none opacity-[0.08] lg:block"
-      />
       <div
         aria-hidden
         className="pointer-events-none absolute -top-40 -left-40 size-[680px] rounded-full bg-[radial-gradient(circle,rgba(255,140,0,0.12),transparent_65%)]"
