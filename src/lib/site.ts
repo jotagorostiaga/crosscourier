@@ -18,6 +18,14 @@ export const site = {
   backing: "SouthCross Logistics",
 } as const;
 
+/**
+ * De dónde se sirve el sitio realmente, sin barra final. WhatsApp, LinkedIn y
+ * compañía necesitan URLs absolutas para la imagen de preview, así que en el
+ * deploy de GitHub Pages hay que apuntar acá (incluye el /repositorio) en vez
+ * de al dominio productivo.
+ */
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? site.url;
+
 export type NavLink = {
   label: string;
   href: string;

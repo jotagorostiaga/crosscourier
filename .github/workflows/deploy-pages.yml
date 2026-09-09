@@ -45,6 +45,9 @@ jobs:
           # Mismo prefijo, pero visible en el cliente: en una exportación
           # estática next/image no optimiza y no se lo agrega solo.
           NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
+          # Origen real del preview: las redes necesitan la URL absoluta de la
+          # imagen de Open Graph. En produccion se saca y toma site.url.
+          NEXT_PUBLIC_SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
           # Pages sirve archivos estáticos: no hay endpoint de leads.
           NEXT_PUBLIC_DEMO: "true"
         run: npm run build

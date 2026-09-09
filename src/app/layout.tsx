@@ -5,7 +5,15 @@ import "./globals.css";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { StickyQuoteBar } from "@/components/layout/sticky-quote-bar";
-import { site } from "@/lib/site";
+import { site, siteUrl } from "@/lib/site";
+
+/** Preview para WhatsApp, LinkedIn y redes: 1200×630, fondo sólido. */
+const ogImage = {
+  url: `${siteUrl}/brand/og.png`,
+  width: 1200,
+  height: 630,
+  alt: `${site.name} · courier internacional, importación y exportación`,
+};
 
 /**
  * Coolvetica para titulares: es la tipografía de la marca. Viene en un solo
@@ -37,7 +45,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  metadataBase: new URL(siteUrl),
   title: {
     default: `${site.name} · Courier internacional, importación y exportación`,
     template: `%s · ${site.name}`,
@@ -51,7 +59,14 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: `${site.name} · Cuando importás o exportás, necesitás mucho más que un courier`,
     description: site.description,
-    url: site.url,
+    url: siteUrl,
+    images: [ogImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} · Cuando importás o exportás, necesitás mucho más que un courier`,
+    description: site.description,
+    images: [ogImage],
   },
   robots: { index: true, follow: true },
   formatDetection: { telephone: false },
