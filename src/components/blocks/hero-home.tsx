@@ -14,10 +14,14 @@ import { routes } from "@/lib/site";
  * entre dos bloques de marca y el contenido claro en el medio. El degradado
  * es más denso del lado del texto y se abre hacia la derecha, así la foto
  * respira detrás de la tarjeta del cotizador sin comprometer la lectura.
+ *
+ * Abajo el bloque no se degrada al fondo claro —mezclar dos valores opuestos
+ * siempre deja una banda de gris sucio— sino que termina como forma: la foto
+ * se disuelve en ink plano y el bloque cierra con las esquinas redondeadas.
  */
 export function HeroHome() {
   return (
-    <section className="cc-hero-offset relative isolate overflow-hidden bg-surface-ink-2">
+    <section className="cc-hero-offset relative isolate overflow-hidden rounded-b-[clamp(1.5rem,2.6vw,2.5rem)] bg-surface-ink-2">
       <Image
         src={media("hero2")}
         alt=""
@@ -45,13 +49,6 @@ export function HeroHome() {
       <div
         aria-hidden
         className="pointer-events-none absolute -top-40 -left-40 size-[680px] rounded-full bg-[radial-gradient(circle,rgba(255,140,0,0.12),transparent_65%)]"
-      />
-
-      {/* El ink se disuelve en el fondo de la página: sin corte contra la
-          bandeja de accesos que viene abajo. */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-[clamp(5rem,11vw,10rem)] bg-[linear-gradient(to_bottom,transparent_0%,rgba(246,246,244,0.14)_42%,rgba(246,246,244,0.58)_74%,var(--cc-bg)_100%)]"
       />
 
       <Container className="relative">
