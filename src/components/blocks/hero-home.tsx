@@ -29,7 +29,9 @@ export function HeroHome() {
         fill
         priority
         sizes="100vw"
-        className="cc-hero-photo object-cover object-center"
+        /* En desktop el recorte se corre hacia arriba de la foto: centrado, la
+           trompa del avión quedaba cortada contra el borde superior. */
+        className="cc-hero-photo object-cover object-center md:object-[50%_18%]"
       />
       <div
         aria-hidden
