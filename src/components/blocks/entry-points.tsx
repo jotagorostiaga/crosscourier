@@ -45,7 +45,7 @@ const entries = [
  */
 export function EntryPoints() {
   return (
-    <section className="bg-bg pb-16 md:pb-24">
+    <section className="bg-bg pt-14 pb-16 md:pt-20 md:pb-24">
       <Container>
         <Reveal>
           <div className="rounded-[calc(var(--cc-radius-panel)+0.5rem)] bg-surface-2 p-2">
