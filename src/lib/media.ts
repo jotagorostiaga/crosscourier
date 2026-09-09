@@ -24,6 +24,7 @@ export const mediaManifest = {
   warehouse: `${CDN}/hf_20260906_135317_b6a62366-cb50-4bb2-833a-dccad89c1fba.png`,
 
   /* Fotos propias del cliente: sólo existen en /public/media. */
+  hero2: "/media/hero2.jpg",
   "maritimo-china": "/media/maritimo-china.jpg",
   "aereo-standard": "/media/aereo-standard.jpg",
   "maritimo-miami": "/media/maritimo-miami.jpg",
