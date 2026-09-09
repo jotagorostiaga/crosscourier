@@ -29,9 +29,9 @@ export function HeroHome() {
         fill
         priority
         sizes="100vw"
-        /* En desktop el recorte arranca en el borde superior de la foto, que
-           trae una franja extendida para que la trompa del avión respire. */
-        className="cc-hero-photo object-cover object-center md:object-top"
+        /* La foto trae una franja extendida arriba para que la trompa del avión
+           respire; el recorte se apoya en la parte alta, no en el borde. */
+        className="cc-hero-photo object-cover object-center md:object-[50%_40%]"
       />
       <div
         aria-hidden
