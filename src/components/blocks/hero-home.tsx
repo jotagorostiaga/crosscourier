@@ -25,7 +25,7 @@ export function HeroHome() {
         fill
         priority
         sizes="100vw"
-        className="object-cover object-center"
+        className="cc-hero-photo object-cover object-center"
       />
       <div
         aria-hidden
@@ -47,8 +47,15 @@ export function HeroHome() {
         className="pointer-events-none absolute -top-40 -left-40 size-[680px] rounded-full bg-[radial-gradient(circle,rgba(255,140,0,0.12),transparent_65%)]"
       />
 
+      {/* El ink se disuelve en el fondo de la página: sin corte contra la
+          bandeja de accesos que viene abajo. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[clamp(5rem,11vw,10rem)] bg-[linear-gradient(to_bottom,transparent_0%,rgba(246,246,244,0.14)_42%,rgba(246,246,244,0.58)_74%,var(--cc-bg)_100%)]"
+      />
+
       <Container className="relative">
-        <div className="grid items-center gap-12 pt-12 pb-16 md:pt-16 md:pb-20 lg:grid-cols-12 lg:gap-10">
+        <div className="grid items-center gap-12 pt-12 pb-20 md:pt-16 md:pb-28 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-6">
             <Pill tone="ink">
               Courier internacional · Importación y exportación

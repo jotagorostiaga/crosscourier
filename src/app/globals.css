@@ -212,8 +212,11 @@
      * Vidrio de verdad: la barra queda translúcida para que se vea el
      * desenfoque de lo que pasa por detrás. La legibilidad la sostienen el
      * blur y la saturación, no la opacidad.
+     *
+     * El 78% es el piso: por debajo, sobre el hero oscuro, el blanco se
+     * ensucia y el logo en ink deja de despegarse de la barra.
      */
-    background-color: color-mix(in oklab, var(--cc-surface) 62%, transparent);
+    background-color: color-mix(in oklab, var(--cc-surface) 78%, transparent);
     border: 1px solid color-mix(in oklab, #ffffff 55%, transparent);
     box-shadow: var(--cc-shadow-md);
     backdrop-filter: blur(26px) saturate(1.7);
@@ -225,7 +228,7 @@
   }
 
   header[data-scrolled="true"] .cc-headbar {
-    background-color: color-mix(in oklab, var(--cc-surface) 80%, transparent);
+    background-color: color-mix(in oklab, var(--cc-surface) 90%, transparent);
     box-shadow: var(--cc-shadow-lg);
   }
 
