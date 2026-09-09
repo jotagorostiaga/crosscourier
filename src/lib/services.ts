@@ -214,7 +214,7 @@ export const services: Service[] = [
     prefill: { need: "importar" },
     media: {
       key: "standard",
-      alt: "Carga paletizada esperando embarque en una terminal aérea",
+      alt: "Pallets de carga entrando a la bodega de un avión carguero",
     },
   },
   {
@@ -267,7 +267,7 @@ export const services: Service[] = [
     prefill: { need: "importar", urgency: "evaluando" },
     media: {
       key: "maritimo",
-      alt: "Contenedores apilados en una terminal portuaria al atardecer",
+      alt: "Pallets en el muelle de una terminal portuaria, con un buque portacontenedores al fondo",
     },
   },
   {
